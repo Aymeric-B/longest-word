@@ -4,7 +4,7 @@
 
 import string
 import random
-
+import requests
 
 class Game:
     def __init__(self):
@@ -23,4 +23,6 @@ class Game:
             else:
                 return False
 
-        return True
+        response = requests.get("https://wagon-dictionary.herokuapp.com/" + word)
+
+        return response.json()["found"]
